@@ -31,7 +31,6 @@ export default function HomePage() {
             Virtual Mailbox Canada
           </span>
         </div>
-
         {/* Desktop Links */}
         <div className="hidden gap-8 text-sm text-gray-300 md:flex">
           <Link href="/" className="transition hover:text-white">
@@ -192,7 +191,7 @@ export default function HomePage() {
       <PricingSection />
       {/* FOOTER */}
       <footer className="mt-10 border-t border-gray-900 py-10 text-center text-sm text-gray-600">
-        © Design and Developed by{" "}
+        © 2026 Virtual Mailbox Canada. All Rights Reserved. Design and Developed by{" "}
         <a
           href="https://totalofftec.com"
           target="_blank"
