@@ -191,7 +191,7 @@ export default function HomePage() {
       <PricingSection />
       {/* FOOTER */}
       <footer className="mt-10 border-t border-gray-900 py-10 text-center text-sm text-gray-600">
-        © 2026 Virtual Mailbox Canada. All Rights Reserved. Design and Developed by{" "}
+        © 2026 Virtual Mailbox Canada. All Rights Reserved. Designed and Developed by{" "}
         <a
           href="https://totalofftec.com"
           target="_blank"
