@@ -3,180 +3,206 @@
 import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+
 export default function LoginPage() {
   const router = useRouter();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [loginError, setLoginError] = useState("");
   const [loading, setLoading] = useState(false);
- const handleLogin = async (
-  e: FormEvent<HTMLFormElement>
-) => {
-  e.preventDefault();
 
-  setEmailError("");
-  setPasswordError("");
-  setLoginError("");
+  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-  const cleanEmail = email.trim();
-  const cleanPassword = password.trim();
+    setEmailError("");
+    setPasswordError("");
+    setLoginError("");
 
-  let isValid = true;
+    const cleanEmail = email.trim();
+    const cleanPassword = password.trim();
 
-  if (!cleanEmail.includes("@")) {
-    setEmailError("Please enter a valid email address");
-    isValid = false;
-  }
+    let isValid = true;
 
-  if (cleanPassword.length < 8) {
-    setPasswordError("Password must be at least 8 characters");
-    isValid = false;
-  }
-
-  if (!isValid) {
-    setLoginError("Login failed. Please fix the errors below.");
-    return;
-  }
-
-  try {
-    setLoading(true);
-
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/login`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          email: cleanEmail,
-          password: cleanPassword,
-        }),
-      }
-    );
-
-    const data = await response.json();
-
-    console.log("STATUS:", response.status);
-    console.log("LOGIN RESPONSE:", data);
-
-    if (response.ok) {
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data));
-
-      router.push("/dashboard");
-    } else {
-      setLoginError(data.message || "Invalid Credentials");
+    if (!cleanEmail.includes("@")) {
+      setEmailError("Please enter a valid email address");
+      isValid = false;
     }
-  } catch (error) {
-    console.error(error);
 
-    setLoginError("Server Error. Please check backend.");
-  } finally {
-    setLoading(false);
-  }
-};
+    if (cleanPassword.length < 8) {
+      setPasswordError("Password must be at least 8 characters");
+      isValid = false;
+    }
+
+    if (!isValid) {
+      setLoginError("Login failed. Please fix the errors below.");
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            email: cleanEmail,
+            password: cleanPassword,
+          }),
+        },
+      );
+
+      const data = await response.json();
+
+      console.log("STATUS:", response.status);
+      console.log("LOGIN RESPONSE:", data);
+
+      if (response.ok) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data));
+
+        router.push("/dashboard");
+      } else {
+        setLoginError(data.message || "Invalid Credentials");
+      }
+    } catch (error) {
+      console.error(error);
+      setLoginError("Server Error. Please check backend.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#0b0f19] p-6">
-      <div className="fixed top-6 right-6 z-50">
-        <Link
-          href="/"
-          className="flex items-center gap-2 rounded-lg border border-gray-800 bg-[#0e1424] px-4 py-2 text-sm text-gray-300 transition hover:border-teal-500/50 hover:text-white"
-        >
-          ← Back To Home
-        </Link>
-      </div>
+    <div className="relative flex min-h-[80vh] items-center justify-center overflow-hidden px-6 py-16">
+      {/* Extra subtle glow for Login page */}
+      <div className="pointer-events-none absolute top-[-180px] right-[-180px] h-[500px] w-[500px] rounded-full bg-gradient-to-br from-teal-500/20 to-purple-600/20 blur-[140px]" />
 
-      <div className="pointer-events-none absolute top-0 left-0 h-full w-full bg-gradient-to-b from-teal-900/10 to-transparent" />
-      <div className="pointer-events-none absolute right-[-10%] bottom-[-20%] h-[600px] w-[600px] rounded-full bg-blue-600/15 blur-[150px]" />
-      <div className="relative z-10 w-full max-w-md rounded-2xl border border-gray-800 bg-[#0e1424] p-8 shadow-2xl">
+      <div className="pointer-events-none absolute bottom-[-200px] left-[-150px] h-[500px] w-[500px] rounded-full bg-gradient-to-tr from-blue-500/15 to-pink-500/15 blur-[140px]" />
+
+      {/* LOGIN CARD */}
+      <div className="relative z-10 w-full max-w-md rounded-3xl border border-gray-800 bg-[#0e1424]/85 p-8 shadow-2xl backdrop-blur-xl md:p-10">
+        {/* Logo / Heading */}
         <div className="mb-8 text-center">
           <Link
             href="/"
-            className="mb-2 inline-block bg-gradient-to-r from-teal-400 to-purple-500 bg-clip-text text-2xl font-bold text-transparent"
+            className="mb-5 inline-flex items-center justify-center"
           >
-            📬 Mail-box
+            <span className="bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 bg-clip-text text-2xl font-bold text-transparent">
+              📬 Virtual Mailbox Canada
+            </span>
           </Link>
-          <h2 className="text-2xl font-bold text-white">Welcome Back</h2>
-          <p className="mt-1 text-sm text-gray-400">
-            Log in to manage your digital mails.
+
+          <h1 className="text-3xl font-bold text-white">Welcome Back</h1>
+
+          <p className="mt-2 text-sm text-gray-400">
+            Log in to manage your digital mail.
           </p>
         </div>
 
+        {/* Login Error */}
         {loginError && (
-          <p className="mb-4 text-center text-sm text-red-400">{loginError}</p>
+          <div className="mb-5 rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-center text-sm text-red-400">
+            {loginError}
+          </div>
         )}
+
+        {/* FORM */}
         <form className="space-y-5" onSubmit={handleLogin}>
+          {/* EMAIL */}
           <div>
-            <label className="mb-1 block text-sm font-medium text-gray-400">
+            <label
+              htmlFor="email"
+              className="mb-2 block text-sm font-medium text-gray-300"
+            >
               Email Address
             </label>
 
             <input
+              id="email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="name@gmail.com"
-              className="w-full rounded-lg border border-gray-700 bg-[#131b30] px-4 py-3 text-white transition focus:border-teal-500 focus:outline-none"
+              className={`w-full rounded-xl border ${
+                emailError ? "border-red-500/60" : "border-gray-700"
+              } bg-[#131b30]/90 px-4 py-3 text-white transition outline-none placeholder:text-gray-600 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20`}
             />
+
             {emailError && (
-              <p className="mt-1 text-xs text-red-400">{emailError}</p>
+              <p className="mt-2 text-xs text-red-400">{emailError}</p>
             )}
           </div>
 
+          {/* PASSWORD */}
           <div>
-            <div className="mb-1 flex items-center justify-between">
-              <label className="block text-sm font-medium text-gray-400">
+            <div className="mb-2 flex items-center justify-between">
+              <label
+                htmlFor="password"
+                className="text-sm font-medium text-gray-300"
+              >
                 Password
               </label>
 
               <Link
                 href="/forgot-password"
-                className="text-xs text-teal-400 hover:text-teal-300"
+                className="text-xs text-teal-400 transition hover:text-teal-300"
               >
-                Forgot?
+                Forgot Password?
               </Link>
             </div>
 
             <div className="relative">
               <input
+                id="password"
                 type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full rounded-lg border border-gray-700 bg-[#131b30] px-4 py-3 pr-20 text-white transition focus:border-teal-500 focus:outline-none"
+                className={`w-full rounded-xl border ${
+                  passwordError ? "border-red-500/60" : "border-gray-700"
+                } bg-[#131b30]/90 px-4 py-3 pr-20 text-white transition outline-none placeholder:text-gray-600 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20`}
               />
+
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute top-1/2 right-3 -translate-y-1/2 text-xs text-gray-400 hover:text-white"
+                className="absolute top-1/2 right-4 -translate-y-1/2 text-xs font-medium text-gray-400 transition hover:text-white"
               >
                 {showPassword ? "Hide" : "Show"}
               </button>
             </div>
 
             {passwordError && (
-              <p className="mt-1 text-xs text-red-400">{passwordError}</p>
+              <p className="mt-2 text-xs text-red-400">{passwordError}</p>
             )}
           </div>
 
+          {/* LOGIN BUTTON */}
           <button
             type="submit"
             disabled={loading}
-            className="mt-4 w-full rounded-lg bg-gradient-to-r from-teal-500 to-blue-600 py-3 font-medium text-white shadow-lg shadow-teal-500/25 transition hover:opacity-90 disabled:opacity-50"
+            className="mt-6 w-full rounded-xl bg-gradient-to-r from-teal-500 via-blue-500 to-purple-600 py-3.5 font-semibold text-white shadow-lg shadow-teal-500/20 transition duration-300 hover:scale-[1.01] hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {loading ? "Logging in..." : "Log In"}
           </button>
         </form>
-        <p className="mt-6 text-center text-sm text-gray-400">
+
+        {/* REGISTER */}
+        <p className="mt-7 text-center text-sm text-gray-400">
           Don't have an account?{" "}
           <Link
             href="/register"
-            className="font-medium text-teal-400 hover:text-teal-300"
+            className="font-semibold text-teal-400 transition hover:text-teal-300"
           >
             Sign Up
           </Link>
