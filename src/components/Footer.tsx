@@ -6,6 +6,7 @@ import {
   Phone,
   Clock,
   Mail,
+  CreditCard,
 } from "lucide-react";
 
 import {
@@ -18,11 +19,15 @@ import {
 export default function Footer() {
   return (
     <footer className="mt-20 border-t border-gray-800 bg-[#080c14] text-gray-400">
-      {/* MAIN FOOTER */}
+      {/* =========================
+          MAIN FOOTER
+      ========================== */}
       <div className="mx-auto max-w-7xl px-6 py-14 md:px-10">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
 
-          {/* COLUMN 1 - CONTACT INFO */}
+          {/* =========================
+              COLUMN 1 - CONTACT INFO
+          ========================== */}
           <div>
             <h3 className="mb-6 text-lg font-semibold text-white">
               Virtual Mailbox Canada
@@ -87,7 +92,9 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* SOCIAL MEDIA */}
+            {/* =========================
+                SOCIAL MEDIA
+            ========================== */}
             <div className="mt-7">
               <p className="mb-4 text-sm text-gray-300">
                 Follow us on
@@ -135,7 +142,9 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* COLUMN 2 - COMPANY */}
+          {/* =========================
+              COLUMN 2 - COMPANY
+          ========================== */}
           <div>
             <h3 className="mb-6 text-lg font-semibold text-white">
               Company
@@ -200,7 +209,9 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* COLUMN 3 - CUSTOMER CARE */}
+          {/* =========================
+              COLUMN 3 - CUSTOMER CARE
+          ========================== */}
           <div>
             <h3 className="mb-6 text-lg font-semibold text-white">
               Customer Care
@@ -245,18 +256,20 @@ export default function Footer() {
               </li>
 
               <li>
-                <Link
+                {/* <Link
                   href="/how-it-works"
                   className="transition-colors duration-300 hover:text-teal-400"
                 >
                   Help Center
-                </Link>
+                </Link> */}
               </li>
 
             </ul>
           </div>
 
-          {/* COLUMN 4 - PAYMENT METHODS */}
+          {/* =========================
+              COLUMN 4 - PAYMENT METHODS
+          ========================== */}
           <div>
             <h3 className="mb-6 text-lg font-semibold text-white">
               Payment Methods
@@ -265,50 +278,75 @@ export default function Footer() {
             <div className="grid grid-cols-3 gap-3">
 
               {/* VISA */}
-              <div className="flex h-14 items-center justify-center rounded-lg border border-gray-800 bg-white">
-                <span className="text-xl font-bold italic text-blue-700">
-                  VISA
-                </span>
+              <div className="flex h-14 items-center justify-center rounded-lg border border-gray-800 bg-white px-3">
+                <Image
+                  src="/images/visa.png"
+                  alt="Visa"
+                  width={70}
+                  height={40}
+                  className="max-h-8 w-auto object-contain"
+                />
               </div>
 
-              {/* Mastercard */}
-              <div className="flex h-14 items-center justify-center rounded-lg border border-gray-800 bg-white">
-                <div className="flex">
-                  <span className="h-6 w-6 rounded-full bg-red-500" />
-                  <span className="-ml-3 h-6 w-6 rounded-full bg-yellow-400 opacity-90" />
+              {/* MASTERCARD */}
+              <div className="flex h-14 items-center justify-center rounded-lg border border-gray-800 bg-white px-3">
+                <Image
+                  src="/images/mastercard.png"
+                  alt="Mastercard"
+                  width={70}
+                  height={40}
+                  className="max-h-9 w-auto object-contain"
+                />
+              </div>
+
+              {/* AMERICAN EXPRESS */}
+              <div className="flex h-14 items-center justify-center rounded-lg border border-gray-800 bg-white px-3">
+                <Image
+                  src="/images/amex.png"
+                  alt="American Express"
+                  width={70}
+                  height={40}
+                  className="max-h-9 w-auto object-contain"
+                />
+              </div>
+
+              {/* BKASH */}
+              <div className="flex h-14 items-center justify-center rounded-lg border border-gray-800 bg-white px-3">
+                <Image
+                  src="/images/bkash.png"
+                  alt="bKash"
+                  width={70}
+                  height={40}
+                  className="max-h-9 w-auto object-contain"
+                />
+              </div>
+
+              {/* NAGAD */}
+              <div className="flex h-14 items-center justify-center rounded-lg border border-gray-800 bg-white px-3">
+                <Image
+                  src="/images/nagad.png"
+                  alt="Nagad"
+                  width={70}
+                  height={40}
+                  className="max-h-9 w-auto object-contain"
+                />
+              </div>
+
+              {/* CASH ON DELIVERY */}
+              <div className="flex h-14 items-center justify-center rounded-lg border border-gray-800 bg-white px-2">
+                <div className="flex flex-col items-center justify-center">
+                  <CreditCard
+                    size={22}
+                    strokeWidth={1.8}
+                    className="mb-1 text-gray-700"
+                  />
+
+                  <span className="text-center text-[9px] font-bold leading-tight text-gray-700">
+                    CASH ON
+                    <br />
+                    DELIVERY
+                  </span>
                 </div>
-              </div>
-
-              {/* AMEX */}
-              <div className="flex h-14 items-center justify-center rounded-lg border border-gray-800 bg-white">
-                <span className="text-xs font-bold text-blue-600">
-                  AMERICAN
-                  <br />
-                  EXPRESS
-                </span>
-              </div>
-
-              {/* bKash */}
-              <div className="flex h-14 items-center justify-center rounded-lg border border-gray-800 bg-white">
-                <span className="font-bold text-pink-600">
-                  bKash
-                </span>
-              </div>
-
-              {/* Nagad */}
-              <div className="flex h-14 items-center justify-center rounded-lg border border-gray-800 bg-white">
-                <span className="font-bold text-orange-500">
-                  নগদ
-                </span>
-              </div>
-
-              {/* Cash on Delivery */}
-              <div className="flex h-14 items-center justify-center rounded-lg border border-gray-800 bg-white">
-                <span className="text-center text-xs font-bold text-gray-700">
-                  Cash on
-                  <br />
-                  Delivery
-                </span>
               </div>
 
             </div>
@@ -316,7 +354,9 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* COPYRIGHT */}
+      {/* =========================
+          COPYRIGHT
+      ========================== */}
       <div className="border-t border-gray-800">
         <div className="mx-auto max-w-7xl px-6 py-6 text-center text-sm text-gray-500">
 
@@ -342,3 +382,4 @@ export default function Footer() {
     </footer>
   );
 }
+
