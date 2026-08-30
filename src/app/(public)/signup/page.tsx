@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -18,7 +18,7 @@ export default function SignupPage() {
   const [formError, setFormError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
-  const handleSignup = (e) => {
+  const handleSignup = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setNameError("");
@@ -55,9 +55,7 @@ export default function SignupPage() {
     }
 
     // Success
-    setSuccessMessage(
-      "Account created successfully! Redirecting to login..."
-    );
+    setSuccessMessage("Account created successfully! Redirecting to login...");
 
     setTimeout(() => {
       router.push("/login");
@@ -65,29 +63,25 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0b0f19] flex items-center justify-center p-6 relative overflow-hidden">
-      <div className="fixed top-6 right-6 z-50">
-</div>
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#0b0f19] p-6">
+      <div className="fixed top-6 right-6 z-50"></div>
       {/* Background */}
-      <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-b from-blue-900/10 to-transparent pointer-events-none" />
-      <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] bg-purple-600/15 blur-[150px] rounded-full pointer-events-none" />
+      <div className="pointer-events-none absolute top-0 right-0 h-full w-full bg-gradient-to-b from-blue-900/10 to-transparent" />
+      <div className="pointer-events-none absolute bottom-[-20%] left-[-10%] h-[600px] w-[600px] rounded-full bg-purple-600/15 blur-[150px]" />
 
-      <div className="w-full max-w-md bg-[#0e1424] p-8 rounded-2xl border border-gray-800 shadow-2xl relative z-10">
-
+      <div className="relative z-10 w-full max-w-md rounded-2xl border border-gray-800 bg-[#0e1424] p-8 shadow-2xl">
         {/* Header */}
-        <div className="text-center mb-8">
+        <div className="mb-8 text-center">
           <Link
             href="/"
-            className="inline-block text-2xl font-bold bg-gradient-to-r from-teal-400 to-purple-500 bg-clip-text text-transparent mb-2"
+            className="mb-2 inline-block bg-gradient-to-r from-teal-400 to-purple-500 bg-clip-text text-2xl font-bold text-transparent"
           >
             <span>📬</span>Virtual Maillbox Canada
           </Link>
 
-          <h2 className="text-2xl font-bold text-white">
-            Create an Account
-          </h2>
+          <h2 className="text-2xl font-bold text-white">Create an Account</h2>
 
-          <p className="text-gray-400 text-sm mt-1">
+          <p className="mt-1 text-sm text-gray-400">
             Start managing your mail efficiently.
           </p>
         </div>
@@ -108,10 +102,9 @@ export default function SignupPage() {
 
         {/* Form */}
         <form className="space-y-5" onSubmit={handleSignup}>
-
           {/* Name */}
           <div>
-            <label className="block text-sm font-medium text-gray-400 mb-1">
+            <label className="mb-1 block text-sm font-medium text-gray-400">
               Full Name
             </label>
 
@@ -120,19 +113,17 @@ export default function SignupPage() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Name"
-              className="w-full bg-[#131b30] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-teal-500 transition"
+              className="w-full rounded-lg border border-gray-700 bg-[#131b30] px-4 py-3 text-white transition focus:border-teal-500 focus:outline-none"
             />
 
             {nameError && (
-              <p className="text-red-400 text-xs mt-1">
-                {nameError}
-              </p>
+              <p className="mt-1 text-xs text-red-400">{nameError}</p>
             )}
           </div>
 
           {/* Email */}
           <div>
-            <label className="block text-sm font-medium text-gray-400 mb-1">
+            <label className="mb-1 block text-sm font-medium text-gray-400">
               Business Email
             </label>
 
@@ -141,19 +132,17 @@ export default function SignupPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="name@gmail.com"
-              className="w-full bg-[#131b30] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-teal-500 transition"
+              className="w-full rounded-lg border border-gray-700 bg-[#131b30] px-4 py-3 text-white transition focus:border-teal-500 focus:outline-none"
             />
 
             {emailError && (
-              <p className="text-red-400 text-xs mt-1">
-                {emailError}
-              </p>
+              <p className="mt-1 text-xs text-red-400">{emailError}</p>
             )}
           </div>
 
           {/* Password */}
           <div>
-            <label className="block text-sm font-medium text-gray-400 mb-1">
+            <label className="mb-1 block text-sm font-medium text-gray-400">
               Password
             </label>
 
@@ -163,46 +152,42 @@ export default function SignupPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full bg-[#131b30] border border-gray-700 rounded-lg px-4 py-3 pr-16 text-white focus:outline-none focus:border-teal-500 transition"
+                className="w-full rounded-lg border border-gray-700 bg-[#131b30] px-4 py-3 pr-16 text-white transition focus:border-teal-500 focus:outline-none"
               />
 
               <button
                 type="button"
-                onClick={() =>
-                  setShowPassword(!showPassword)
-                }
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-xs text-gray-400 hover:text-white"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute top-1/2 right-4 -translate-y-1/2 text-xs text-gray-400 hover:text-white"
               >
                 {showPassword ? "Hide" : "Show"}
               </button>
             </div>
 
-            <p className="text-xs text-gray-500 mt-1">
+            <p className="mt-1 text-xs text-gray-500">
               Password must be at least 8 characters.
             </p>
 
             {passwordError && (
-              <p className="text-red-400 text-xs mt-1">
-                {passwordError}
-              </p>
+              <p className="mt-1 text-xs text-red-400">{passwordError}</p>
             )}
           </div>
 
           {/* Submit */}
           <button
             type="submit"
-            className="w-full py-3 mt-4 bg-gradient-to-r from-teal-500 to-blue-600 hover:opacity-90 rounded-lg text-white font-medium transition shadow-lg shadow-teal-500/25"
+            className="mt-4 w-full rounded-lg bg-gradient-to-r from-teal-500 to-blue-600 py-3 font-medium text-white shadow-lg shadow-teal-500/25 transition hover:opacity-90"
           >
             Sign Up
           </button>
         </form>
 
         {/* Footer */}
-        <p className="text-center text-sm text-gray-400 mt-6">
+        <p className="mt-6 text-center text-sm text-gray-400">
           Already have an account?{" "}
           <Link
             href="/login"
-            className="text-teal-400 hover:text-teal-300 font-medium"
+            className="font-medium text-teal-400 hover:text-teal-300"
           >
             Log In
           </Link>
