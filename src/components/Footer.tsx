@@ -24,7 +24,6 @@ export default function Footer() {
       ========================== */}
       <div className="mx-auto max-w-7xl px-6 py-14 md:px-10">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-
           {/* =========================
               COLUMN 1 - CONTACT INFO
           ========================== */}
@@ -34,54 +33,41 @@ export default function Footer() {
             </h3>
 
             <div className="space-y-5 text-sm">
-
               {/* Address */}
               <div className="flex gap-3">
-                <MapPin
-                  size={20}
-                  className="mt-1 shrink-0 text-teal-400"
-                />
+                <MapPin size={20} className="mt-1 shrink-0 text-teal-400" />
 
                 <p className="leading-6">
-                  191/1, Tejgaon C/A,
+                  516 Avenue Meloche,
                   <br />
-                  Dhaka-1208,
+                  Dorval,
                   <br />
-                  Bangladesh
+                  QC H9P2T2
                 </p>
               </div>
 
               {/* Phone */}
               <div className="flex items-center gap-3">
-                <Phone
-                  size={19}
-                  className="shrink-0 text-teal-400"
-                />
+                <Phone size={19} className="shrink-0 text-teal-400" />
 
                 <a
-                  href="tel:+8809613444455"
+                  href="tel:1-888-252-9623"
                   className="transition-colors duration-300 hover:text-teal-400"
                 >
-                  +8809613444455
+                  1-888-252-9623
                 </a>
               </div>
 
               {/* Opening Hours */}
               <div className="flex items-center gap-3">
-                <Clock
-                  size={19}
-                  className="shrink-0 text-teal-400"
-                />
+                <Clock size={19} className="shrink-0 text-teal-400" />
 
                 <span>9 am - 9 pm (Everyday)</span>
               </div>
 
               {/* Email */}
               <div className="flex items-center gap-3">
-                <Mail
-                  size={19}
-                  className="shrink-0 text-teal-400"
-                />
+                <Mail size={19} className="shrink-0 text-teal-400" />
 
                 <a
                   href="mailto:hello@virtualmailboxcanada.com"
@@ -96,12 +82,9 @@ export default function Footer() {
                 SOCIAL MEDIA
             ========================== */}
             <div className="mt-7">
-              <p className="mb-4 text-sm text-gray-300">
-                Follow us on
-              </p>
+              <p className="mb-4 text-sm text-gray-300">Follow us on</p>
 
               <div className="flex gap-3">
-
                 {/* Facebook */}
                 <a
                   href="#"
@@ -137,7 +120,6 @@ export default function Footer() {
                 >
                   <FaInstagram size={17} />
                 </a>
-
               </div>
             </div>
           </div>
@@ -146,12 +128,9 @@ export default function Footer() {
               COLUMN 2 - COMPANY
           ========================== */}
           <div>
-            <h3 className="mb-6 text-lg font-semibold text-white">
-              Company
-            </h3>
+            <h3 className="mb-6 text-lg font-semibold text-white">Company</h3>
 
             <ul className="space-y-4 text-sm">
-
               <li>
                 <Link
                   href="/"
@@ -205,7 +184,6 @@ export default function Footer() {
                   Privacy Policy
                 </Link>
               </li>
-
             </ul>
           </div>
 
@@ -218,7 +196,6 @@ export default function Footer() {
             </h3>
 
             <ul className="space-y-4 text-sm">
-
               <li>
                 <Link
                   href="/contact"
@@ -263,7 +240,6 @@ export default function Footer() {
                   Help Center
                 </Link> */}
               </li>
-
             </ul>
           </div>
 
@@ -276,7 +252,6 @@ export default function Footer() {
             </h3>
 
             <div className="grid grid-cols-3 gap-3">
-
               {/* VISA */}
               <div className="flex h-14 items-center justify-center rounded-lg border border-gray-800 bg-white px-3">
                 <Image
@@ -310,10 +285,10 @@ export default function Footer() {
                 />
               </div>
 
-              {/* BKASH */}
+              {/* Paypal */}
               <div className="flex h-14 items-center justify-center rounded-lg border border-gray-800 bg-white px-3">
                 <Image
-                  src="/images/bkash.png"
+                  src="/images/paypal.png"
                   alt="bKash"
                   width={70}
                   height={40}
@@ -321,10 +296,10 @@ export default function Footer() {
                 />
               </div>
 
-              {/* NAGAD */}
+              {/* Strip */}
               <div className="flex h-14 items-center justify-center rounded-lg border border-gray-800 bg-white px-3">
                 <Image
-                  src="/images/nagad.png"
+                  src="/images/strip.png"
                   alt="Nagad"
                   width={70}
                   height={40}
@@ -341,14 +316,13 @@ export default function Footer() {
                     className="mb-1 text-gray-700"
                   />
 
-                  <span className="text-center text-[9px] font-bold leading-tight text-gray-700">
+                  <span className="text-center text-[9px] leading-tight font-bold text-gray-700">
                     CASH ON
                     <br />
                     DELIVERY
                   </span>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -359,14 +333,9 @@ export default function Footer() {
       ========================== */}
       <div className="border-t border-gray-800">
         <div className="mx-auto max-w-7xl px-6 py-6 text-center text-sm text-gray-500">
+          <span>© 2026 Virtual Mailbox Canada. All Rights Reserved.</span>
 
-          <span>
-            © 2026 Virtual Mailbox Canada. All Rights Reserved.
-          </span>
-
-          <span className="mx-1">
-            Designed & Developed by
-          </span>
+          <span className="mx-1">Designed & Developed by</span>
 
           <a
             href="https://totalofftec.com"
@@ -376,7 +345,6 @@ export default function Footer() {
           >
             TOTALOFFTEC
           </a>
-
         </div>
       </div>
     </footer>
