@@ -71,7 +71,7 @@ export default function Navbar() {
           </div>
 
           {/* DESKTOP BUTTONS */}
-          <div className="hidden items-center gap-3 lg:flex">
+          {/* <div className="hidden items-center gap-3 lg:flex">
             <Link
               href="/login"
               className="rounded-full bg-gradient-to-r from-teal-500 to-purple-600 px-5 py-2 text-sm font-medium text-white shadow-lg shadow-teal-500/10 transition-all duration-300 hover:scale-105 hover:shadow-teal-500/25"
@@ -85,7 +85,7 @@ export default function Navbar() {
             >
               Sign Up
             </Link>
-          </div>
+          </div> */}
 
           {/* MOBILE MENU BUTTON */}
           <button
@@ -152,7 +152,7 @@ export default function Navbar() {
               </div>
 
               {/* MOBILE BUTTONS */}
-              <div className="flex gap-3 border-t border-gray-200 pt-5 dark:border-gray-800">
+              {/* <div className="flex gap-3 border-t border-gray-200 pt-5 dark:border-gray-800">
                 <Link
                   href="/login"
                   onClick={closeMenu}
@@ -168,7 +168,7 @@ export default function Navbar() {
                 >
                   Sign Up
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
         )}
