@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import PricingSection from "@/components/PricingSection";
-import ThemeToggle from "@/components/Themetoggle";
 
 import {
   Shield,
@@ -14,86 +13,7 @@ import {
 
 export default function HomePage() {
   return (
-    <div
-      className="
-        relative
-        min-h-screen
-        overflow-hidden
-        bg-[#f8fafc]
-        text-[#172033]
-        transition-colors
-        duration-500
-
-        dark:bg-[#0b0f19]
-        dark:text-white
-      "
-    >
-      {/* =====================================================
-          BACKGROUND GLOW
-          ===================================================== */}
-
-      <div
-        className="
-          pointer-events-none
-          absolute
-          -right-[200px]
-          -top-[220px]
-          h-[600px]
-          w-[600px]
-          rounded-full
-          bg-gradient-to-br
-          from-cyan-200/50
-          via-blue-200/30
-          to-purple-200/40
-          blur-[140px]
-
-          dark:from-teal-500/30
-          dark:via-transparent
-          dark:to-purple-600/30
-        "
-      />
-
-      <div
-        className="
-          pointer-events-none
-          absolute
-          -bottom-[220px]
-          -left-[200px]
-          h-[600px]
-          w-[600px]
-          rounded-full
-          bg-gradient-to-tr
-          from-blue-200/40
-          via-pink-200/30
-          to-purple-200/30
-          blur-[140px]
-
-          dark:from-blue-500/20
-          dark:via-transparent
-          dark:to-pink-500/20
-        "
-      />
-
-      {/* =====================================================
-          TOP THEME TOGGLE
-          ===================================================== */}
-
-      <header
-        className="
-          relative
-          z-30
-          mx-auto
-          flex
-          max-w-7xl
-          justify-end
-          px-6
-          pt-6
-          md:px-10
-        "
-      >
-        <ThemeToggle />
-      </header>
-
+    <div>
       {/* =====================================================
           HERO SECTION
           ===================================================== */}

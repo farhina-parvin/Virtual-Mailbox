@@ -18,7 +18,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="mt-20 border-t border-gray-800 bg-[#080c14] text-gray-400">
+    <footer className="mt-20 border-t border-gray-200 bg-white/60 text-gray-600 backdrop-blur-xl transition-colors duration-500 dark:border-gray-800 dark:bg-[#080c14] dark:text-gray-400">
       {/* =========================
           MAIN FOOTER
       ========================== */}
@@ -28,7 +28,7 @@ export default function Footer() {
               COLUMN 1 - CONTACT INFO
           ========================== */}
           <div>
-            <h3 className="mb-6 text-lg font-semibold text-white">
+            <h3 className="mb-6 text-lg font-semibold text-gray-900 dark:text-white">
               Virtual Mailbox Canada
             </h3>
 
@@ -82,14 +82,16 @@ export default function Footer() {
                 SOCIAL MEDIA
             ========================== */}
             <div className="mt-7">
-              <p className="mb-4 text-sm text-gray-300">Follow us on</p>
+              <p className="mb-4 text-gray-700 dark:text-gray-300">
+                Follow us on
+              </p>
 
               <div className="flex gap-3">
                 {/* Facebook */}
                 <a
                   href="#"
                   aria-label="Facebook"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-700 transition-all duration-300 hover:border-teal-400 hover:bg-teal-400/10 hover:text-teal-400"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 transition-all duration-300 hover:border-teal-400 hover:bg-teal-400/10 hover:text-teal-400"
                 >
                   <FaFacebookF size={17} />
                 </a>
@@ -98,7 +100,7 @@ export default function Footer() {
                 <a
                   href="#"
                   aria-label="YouTube"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-700 transition-all duration-300 hover:border-teal-400 hover:bg-teal-400/10 hover:text-teal-400"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 transition-all duration-300 hover:border-teal-400 hover:bg-teal-400/10 hover:text-teal-400"
                 >
                   <FaYoutube size={17} />
                 </a>
@@ -107,7 +109,7 @@ export default function Footer() {
                 <a
                   href="#"
                   aria-label="LinkedIn"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-700 transition-all duration-300 hover:border-teal-400 hover:bg-teal-400/10 hover:text-teal-400"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 transition-all duration-300 hover:border-teal-400 hover:bg-teal-400/10 hover:text-teal-400"
                 >
                   <FaLinkedinIn size={17} />
                 </a>
@@ -116,7 +118,7 @@ export default function Footer() {
                 <a
                   href="#"
                   aria-label="Instagram"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-700 transition-all duration-300 hover:border-teal-400 hover:bg-teal-400/10 hover:text-teal-400"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 transition-all duration-300 hover:border-teal-400 hover:bg-teal-400/10 hover:text-teal-400"
                 >
                   <FaInstagram size={17} />
                 </a>
@@ -128,7 +130,9 @@ export default function Footer() {
               COLUMN 2 - COMPANY
           ========================== */}
           <div>
-            <h3 className="mb-6 text-lg font-semibold text-white">Company</h3>
+            <h3 className="mb-6 text-lg font-semibold text-gray-900 dark:text-white">
+              Company
+            </h3>
 
             <ul className="space-y-4 text-sm">
               <li>
@@ -191,7 +195,7 @@ export default function Footer() {
               COLUMN 3 - CUSTOMER CARE
           ========================== */}
           <div>
-            <h3 className="mb-6 text-lg font-semibold text-white">
+            <h3 className="mb-6 text-lg font-semibold text-gray-900 dark:text-white">
               Customer Care
             </h3>
 
@@ -247,13 +251,13 @@ export default function Footer() {
               COLUMN 4 - PAYMENT METHODS
           ========================== */}
           <div>
-            <h3 className="mb-6 text-lg font-semibold text-white">
+            <h3 className="mb-6 text-lg font-semibold text-gray-900 dark:text-white">
               Payment Methods
             </h3>
 
             <div className="grid grid-cols-3 gap-3">
               {/* VISA */}
-              <div className="flex h-14 items-center justify-center rounded-lg border border-gray-800 bg-white px-3">
+              <div className="flex h-14 items-center justify-center rounded-lg border border-gray-200 bg-white px-3">
                 <Image
                   src="/images/visa.png"
                   alt="Visa"
@@ -264,7 +268,7 @@ export default function Footer() {
               </div>
 
               {/* MASTERCARD */}
-              <div className="flex h-14 items-center justify-center rounded-lg border border-gray-800 bg-white px-3">
+              <div className="flex h-14 items-center justify-center rounded-lg border border-gray-200 bg-white px-3">
                 <Image
                   src="/images/mastercard.png"
                   alt="Mastercard"
@@ -275,7 +279,7 @@ export default function Footer() {
               </div>
 
               {/* AMERICAN EXPRESS */}
-              <div className="flex h-14 items-center justify-center rounded-lg border border-gray-800 bg-white px-3">
+              <div className="flex h-14 items-center justify-center rounded-lg border border-gray-200 bg-white px-3">
                 <Image
                   src="/images/amex.png"
                   alt="American Express"
@@ -286,7 +290,7 @@ export default function Footer() {
               </div>
 
               {/* Paypal */}
-              <div className="flex h-14 items-center justify-center rounded-lg border border-gray-800 bg-white px-3">
+              <div className="flex h-14 items-center justify-center rounded-lg border border-gray-200 bg-white px-3">
                 <Image
                   src="/images/paypal.png"
                   alt="bKash"
@@ -297,7 +301,7 @@ export default function Footer() {
               </div>
 
               {/* Strip */}
-              <div className="flex h-14 items-center justify-center rounded-lg border border-gray-800 bg-white px-3">
+              <div className="flex h-14 items-center justify-center rounded-lg border border-gray-200 bg-white px-3">
                 <Image
                   src="/images/strip.png"
                   alt="Nagad"
@@ -308,7 +312,7 @@ export default function Footer() {
               </div>
 
               {/* CASH ON DELIVERY */}
-              <div className="flex h-14 items-center justify-center rounded-lg border border-gray-800 bg-white px-2">
+              <div className="flex h-14 items-center justify-center rounded-lg border border-gray-200 bg-white px-2">
                 <div className="flex flex-col items-center justify-center">
                   <CreditCard
                     size={22}
@@ -331,7 +335,7 @@ export default function Footer() {
       {/* =========================
           COPYRIGHT
       ========================== */}
-      <div className="border-t border-gray-800">
+      <div className="border-t border-gray-200 dark:border-gray-800">
         <div className="mx-auto max-w-7xl px-6 py-6 text-center text-sm text-gray-500">
           <span>© 2026 Virtual Mailbox Canada. All Rights Reserved.</span>
 

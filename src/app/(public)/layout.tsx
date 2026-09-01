@@ -25,22 +25,22 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${outfit.className} bg-[#0b0f19] text-white antialiased`}
+        className={`${outfit.className} antialiased`}
         suppressHydrationWarning
       >
         <ThemeProvider>
           <SidebarProvider>
-            <div className="relative min-h-screen overflow-hidden bg-[#0b0f19] text-white">
-              {/* Background Glow - TOP RIGHT */}
-              <div className="pointer-events-none absolute top-[-200px] right-[-200px] h-[600px] w-[600px] rounded-full bg-gradient-to-br from-teal-500/30 to-purple-600/30 blur-[140px]" />
+            <div className="relative min-h-screen overflow-hidden bg-[#f8fafc] text-gray-900 transition-colors duration-500 dark:bg-[#0b0f19] dark:text-white">
+              {/* LIGHT MODE GLOW */}
+              <div className="pointer-events-none absolute -top-[220px] -right-[200px] h-[600px] w-[600px] rounded-full bg-gradient-to-br from-cyan-200/50 via-blue-200/30 to-purple-200/40 blur-[140px] dark:from-teal-500/30 dark:via-transparent dark:to-purple-600/30" />
 
-              {/* Background Glow - BOTTOM LEFT */}
-              <div className="pointer-events-none absolute bottom-[-200px] left-[-200px] h-[600px] w-[600px] rounded-full bg-gradient-to-tr from-blue-500/20 to-pink-500/20 blur-[140px]" />
+              {/* LIGHT MODE GLOW */}
+              <div className="pointer-events-none absolute -bottom-[220px] -left-[200px] h-[600px] w-[600px] rounded-full bg-gradient-to-tr from-blue-200/40 via-pink-200/30 to-purple-200/30 blur-[140px] dark:from-blue-500/20 dark:via-transparent dark:to-pink-500/20" />
 
               {/* NAVBAR */}
               <Navbar />
 
-              {/* PAGE CONTENT */}
+              {/* CONTENT */}
               <main className="relative z-10">{children}</main>
 
               {/* FOOTER */}
