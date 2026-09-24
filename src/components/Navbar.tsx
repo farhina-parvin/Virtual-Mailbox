@@ -152,7 +152,7 @@ export default function Navbar() {
               </div>
 
               {/* MOBILE BUTTONS */}
-              {/* <div className="flex gap-3 border-t border-gray-200 pt-5 dark:border-gray-800">
+              <div className="flex gap-3 border-t border-gray-200 pt-5 dark:border-gray-800">
                 <Link
                   href="/login"
                   onClick={closeMenu}
@@ -168,7 +168,7 @@ export default function Navbar() {
                 >
                   Sign Up
                 </Link>
-              </div> */}
+              </div>
             </div>
           </div>
         )}

@@ -1,8 +1,11 @@
+
 "use client";
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
+import ThemeToggle from "@/components/Themetoggle";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -55,7 +58,9 @@ export default function SignupPage() {
     }
 
     // Success
-    setSuccessMessage("Account created successfully! Redirecting to login...");
+    setSuccessMessage(
+      "Account created successfully! Redirecting to login..."
+    );
 
     setTimeout(() => {
       router.push("/login");
@@ -63,48 +68,90 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#0b0f19] p-6">
-      <div className="fixed top-6 right-6 z-50"></div>
-      {/* Background */}
-      <div className="pointer-events-none absolute top-0 right-0 h-full w-full bg-gradient-to-b from-blue-900/10 to-transparent" />
-      <div className="pointer-events-none absolute bottom-[-20%] left-[-10%] h-[600px] w-[600px] rounded-full bg-purple-600/15 blur-[150px]" />
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#f8fafc] p-6 text-[#172033] transition-colors duration-500 dark:bg-[#0b0f19] dark:text-white">
+      {/* =====================================================
+          THEME TOGGLE
+          ===================================================== */}
 
-      <div className="relative z-10 w-full max-w-md rounded-2xl border border-gray-800 bg-[#0e1424] p-8 shadow-2xl">
-        {/* Header */}
+      <div className="fixed top-6 right-6 z-50">
+        <ThemeToggle />
+      </div>
+
+      {/* =====================================================
+          BACKGROUND GLOW
+          Same style as Home Page
+          ===================================================== */}
+
+      <div className="pointer-events-none absolute -top-[220px] -right-[180px] h-[600px] w-[600px] rounded-full bg-gradient-to-br from-cyan-200/50 via-blue-200/30 to-purple-200/40 blur-[140px] dark:from-teal-500/30 dark:via-transparent dark:to-purple-600/30" />
+
+      <div className="pointer-events-none absolute -bottom-[220px] -left-[180px] h-[600px] w-[600px] rounded-full bg-gradient-to-tr from-blue-200/40 via-pink-200/30 to-purple-200/30 blur-[140px] dark:from-blue-500/20 dark:via-transparent dark:to-pink-500/20" />
+
+      {/* =====================================================
+          MAIN SIGNUP CARD
+          ===================================================== */}
+
+      <div className="relative z-10 w-full max-w-md rounded-2xl border border-gray-200 bg-white/80 p-8 shadow-xl shadow-blue-100/40 backdrop-blur-xl transition-all duration-500 dark:border-gray-800 dark:bg-[#0e1424] dark:shadow-2xl">
+        {/* =================================================
+            HEADER
+            ================================================= */}
+
         <div className="mb-8 text-center">
           <Link
             href="/"
-            className="mb-2 inline-block bg-gradient-to-r from-teal-400 to-purple-500 bg-clip-text text-2xl font-bold text-transparent"
+            className="mb-5 flex flex-col items-center justify-center"
           >
-            <span>📬</span>Virtual Maillbox Canada
+            <Image
+              src="/images/mailbox_logo.png"
+              alt="Virtual Mailbox Canada"
+              width={180}
+              height={60}
+              priority
+              className="h-14 w-auto object-contain"
+            />
+            <span className="mt-2 bg-gradient-to-r from-teal-500 via-blue-500 to-purple-600 bg-clip-text text-2xl font-bold text-transparent">
+              Virtual Mailbox Canada
+            </span>
           </Link>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+            Create an Account
+          </h2>
 
-          <h2 className="text-2xl font-bold text-white">Create an Account</h2>
-
-          <p className="mt-1 text-sm text-gray-400">
+          <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
             Start managing your mail efficiently.
           </p>
         </div>
 
-        {/* Success Message */}
+        {/* =================================================
+            SUCCESS MESSAGE
+            ================================================= */}
+
         {successMessage && (
-          <div className="mb-4 rounded-lg border border-green-500/30 bg-green-500/10 px-4 py-3 text-sm text-green-400">
+          <div className="mb-4 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700 dark:border-green-500/30 dark:bg-green-500/10 dark:text-green-400">
             {successMessage}
           </div>
         )}
 
-        {/* Error Message */}
+        {/* =================================================
+            ERROR MESSAGE
+            ================================================= */}
+
         {formError && (
-          <div className="mb-4 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400">
+          <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600 dark:border-red-500/30 dark:bg-red-500/10 dark:text-red-400">
             {formError}
           </div>
         )}
 
-        {/* Form */}
+        {/* =================================================
+            FORM
+            ================================================= */}
+
         <form className="space-y-5" onSubmit={handleSignup}>
-          {/* Name */}
+          {/* =================================================
+              NAME
+              ================================================= */}
+
           <div>
-            <label className="mb-1 block text-sm font-medium text-gray-400">
+            <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-400">
               Full Name
             </label>
 
@@ -113,17 +160,22 @@ export default function SignupPage() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Name"
-              className="w-full rounded-lg border border-gray-700 bg-[#131b30] px-4 py-3 text-white transition focus:border-teal-500 focus:outline-none"
+              className="w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-800 shadow-sm transition placeholder:text-gray-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/10 focus:outline-none dark:border-gray-700 dark:bg-[#131b30] dark:text-white dark:placeholder:text-gray-500"
             />
 
             {nameError && (
-              <p className="mt-1 text-xs text-red-400">{nameError}</p>
+              <p className="mt-1 text-xs text-red-500 dark:text-red-400">
+                {nameError}
+              </p>
             )}
           </div>
 
-          {/* Email */}
+          {/* =================================================
+              EMAIL
+              ================================================= */}
+
           <div>
-            <label className="mb-1 block text-sm font-medium text-gray-400">
+            <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-400">
               Business Email
             </label>
 
@@ -132,17 +184,22 @@ export default function SignupPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="name@gmail.com"
-              className="w-full rounded-lg border border-gray-700 bg-[#131b30] px-4 py-3 text-white transition focus:border-teal-500 focus:outline-none"
+              className="w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-800 shadow-sm transition placeholder:text-gray-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/10 focus:outline-none dark:border-gray-700 dark:bg-[#131b30] dark:text-white dark:placeholder:text-gray-500"
             />
 
             {emailError && (
-              <p className="mt-1 text-xs text-red-400">{emailError}</p>
+              <p className="mt-1 text-xs text-red-500 dark:text-red-400">
+                {emailError}
+              </p>
             )}
           </div>
 
-          {/* Password */}
+          {/* =================================================
+              PASSWORD
+              ================================================= */}
+
           <div>
-            <label className="mb-1 block text-sm font-medium text-gray-400">
+            <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-400">
               Password
             </label>
 
@@ -152,42 +209,50 @@ export default function SignupPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full rounded-lg border border-gray-700 bg-[#131b30] px-4 py-3 pr-16 text-white transition focus:border-teal-500 focus:outline-none"
+                className="w-full rounded-lg border border-gray-200 bg-white px-4 py-3 pr-16 text-gray-800 shadow-sm transition placeholder:text-gray-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/10 focus:outline-none dark:border-gray-700 dark:bg-[#131b30] dark:text-white dark:placeholder:text-gray-500"
               />
 
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute top-1/2 right-4 -translate-y-1/2 text-xs text-gray-400 hover:text-white"
+                className="absolute top-1/2 right-4 -translate-y-1/2 text-xs font-medium text-gray-500 transition hover:text-teal-500 dark:text-gray-400 dark:hover:text-white"
               >
                 {showPassword ? "Hide" : "Show"}
               </button>
             </div>
 
-            <p className="mt-1 text-xs text-gray-500">
+            <p className="mt-1 text-xs text-gray-500 dark:text-gray-500">
               Password must be at least 8 characters.
             </p>
 
             {passwordError && (
-              <p className="mt-1 text-xs text-red-400">{passwordError}</p>
+              <p className="mt-1 text-xs text-red-500 dark:text-red-400">
+                {passwordError}
+              </p>
             )}
           </div>
 
-          {/* Submit */}
+          {/* =================================================
+              SUBMIT BUTTON
+              ================================================= */}
+
           <button
             type="submit"
-            className="mt-4 w-full rounded-lg bg-gradient-to-r from-teal-500 to-blue-600 py-3 font-medium text-white shadow-lg shadow-teal-500/25 transition hover:opacity-90"
+            className="mt-4 w-full rounded-lg bg-gradient-to-r from-teal-500 to-blue-600 py-3 font-medium text-white shadow-lg shadow-teal-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:opacity-90"
           >
             Sign Up
           </button>
         </form>
 
-        {/* Footer */}
-        <p className="mt-6 text-center text-sm text-gray-400">
+        {/* =================================================
+            FOOTER
+            ================================================= */}
+
+        <p className="mt-6 text-center text-sm text-gray-600 dark:text-gray-400">
           Already have an account?{" "}
           <Link
             href="/login"
-            className="font-medium text-teal-400 hover:text-teal-300"
+            className="font-medium text-teal-500 transition hover:text-teal-600 dark:text-teal-400 dark:hover:text-teal-300"
           >
             Log In
           </Link>
@@ -196,3 +261,4 @@ export default function SignupPage() {
     </div>
   );
 }
+

@@ -3,6 +3,7 @@
 import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -83,35 +84,46 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="relative flex min-h-[80vh] items-center justify-center overflow-hidden px-6 py-16">
-      {/* Extra subtle glow for Login page */}
-      <div className="pointer-events-none absolute top-[-180px] right-[-180px] h-[500px] w-[500px] rounded-full bg-gradient-to-br from-teal-500/20 to-purple-600/20 blur-[140px]" />
+    <div className="relative flex min-h-[80vh] items-center justify-center overflow-hidden bg-[#f8fafc] px-6 py-16 text-[#172033] transition-colors duration-500 dark:bg-[#0b0f19] dark:text-white">
+      {/* TOP RIGHT GLOW */}
+      <div className="pointer-events-none absolute -top-[180px] -right-[180px] h-[500px] w-[500px] rounded-full bg-gradient-to-br from-cyan-200/50 via-blue-200/30 to-purple-200/40 blur-[140px] dark:from-teal-500/30 dark:via-transparent dark:to-purple-600/30" />
 
-      <div className="pointer-events-none absolute bottom-[-200px] left-[-150px] h-[500px] w-[500px] rounded-full bg-gradient-to-tr from-blue-500/15 to-pink-500/15 blur-[140px]" />
+      {/* BOTTOM LEFT GLOW */}
+      <div className="pointer-events-none absolute -bottom-[200px] -left-[150px] h-[500px] w-[500px] rounded-full bg-gradient-to-tr from-blue-200/40 via-pink-200/30 to-purple-200/30 blur-[140px] dark:from-blue-500/20 dark:via-transparent dark:to-pink-500/20" />
+
+      {/* CENTER TOP SOFT GLOW */}
+      <div className="pointer-events-none absolute top-0 left-1/2 h-[250px] w-[500px] -translate-x-1/2 rounded-full bg-gradient-to-r from-teal-200/20 via-blue-200/20 to-purple-200/20 blur-[100px] dark:from-teal-500/10 dark:via-blue-500/10 dark:to-purple-500/10" />
 
       {/* LOGIN CARD */}
-      <div className="relative z-10 w-full max-w-md rounded-3xl border border-gray-800 bg-[#0e1424]/85 p-8 shadow-2xl backdrop-blur-xl md:p-10">
-        {/* Logo / Heading */}
+      <div className="relative z-10 w-full max-w-md rounded-3xl border border-gray-200 bg-white/85 p-8 shadow-2xl shadow-blue-100/40 backdrop-blur-xl transition-colors duration-500 md:p-10 dark:border-gray-800 dark:bg-[#0e1424] dark:shadow-black/30">
+        {/* LOGO + HEADING */}
         <div className="mb-8 text-center">
           <Link
             href="/"
-            className="mb-5 inline-flex items-center justify-center"
+            className="mb-5 flex flex-col items-center justify-center"
           >
-            <span className="bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 bg-clip-text text-2xl font-bold text-transparent">
-              📬 Virtual Mailbox Canada
+            <Image
+              src="/images/mailbox_logo.png"
+              alt="Virtual Mailbox Canada"
+              width={180}
+              height={60}
+              priority
+              className="h-14 w-auto object-contain"
+            />
+
+            <span className="mt-2 bg-gradient-to-r from-teal-500 via-blue-500 to-purple-600 bg-clip-text text-2xl font-bold text-transparent">
+              Virtual Mailbox Canada
             </span>
           </Link>
 
-          <h1 className="text-3xl font-bold text-white">Welcome Back</h1>
-
-          <p className="mt-2 text-sm text-gray-400">
+          <h2 className="mt-2 text-sm text-gray-600 dark:text-gray-400">
             Log in to manage your digital mail.
-          </p>
+          </h2>
         </div>
 
-        {/* Login Error */}
+        {/* LOGIN ERROR */}
         {loginError && (
-          <div className="mb-5 rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-center text-sm text-red-400">
+          <div className="mb-5 rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-center text-sm text-red-600 dark:text-red-400">
             {loginError}
           </div>
         )}
@@ -122,7 +134,7 @@ export default function LoginPage() {
           <div>
             <label
               htmlFor="email"
-              className="mb-2 block text-sm font-medium text-gray-300"
+              className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
             >
               Email Address
             </label>
@@ -134,12 +146,16 @@ export default function LoginPage() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="name@gmail.com"
               className={`w-full rounded-xl border ${
-                emailError ? "border-red-500/60" : "border-gray-700"
-              } bg-[#131b30]/90 px-4 py-3 text-white transition outline-none placeholder:text-gray-600 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20`}
+                emailError
+                  ? "border-red-500/60"
+                  : "border-gray-200 dark:border-gray-700"
+              } bg-white px-4 py-3 text-gray-900 transition outline-none placeholder:text-gray-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/10 dark:bg-[#131b30]/90 dark:text-white dark:placeholder:text-gray-600 dark:focus:ring-teal-500/20`}
             />
 
             {emailError && (
-              <p className="mt-2 text-xs text-red-400">{emailError}</p>
+              <p className="mt-2 text-xs text-red-500 dark:text-red-400">
+                {emailError}
+              </p>
             )}
           </div>
 
@@ -148,14 +164,14 @@ export default function LoginPage() {
             <div className="mb-2 flex items-center justify-between">
               <label
                 htmlFor="password"
-                className="text-sm font-medium text-gray-300"
+                className="text-sm font-medium text-gray-700 dark:text-gray-300"
               >
                 Password
               </label>
 
               <Link
                 href="/forgot-password"
-                className="text-xs text-teal-400 transition hover:text-teal-300"
+                className="text-xs text-teal-600 transition hover:text-teal-500 dark:text-teal-400 dark:hover:text-teal-300"
               >
                 Forgot Password?
               </Link>
@@ -169,21 +185,25 @@ export default function LoginPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 className={`w-full rounded-xl border ${
-                  passwordError ? "border-red-500/60" : "border-gray-700"
-                } bg-[#131b30]/90 px-4 py-3 pr-20 text-white transition outline-none placeholder:text-gray-600 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20`}
+                  passwordError
+                    ? "border-red-500/60"
+                    : "border-gray-200 dark:border-gray-700"
+                } bg-white px-4 py-3 pr-20 text-gray-900 transition outline-none placeholder:text-gray-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/10 dark:bg-[#131b30]/90 dark:text-white dark:placeholder:text-gray-600 dark:focus:ring-teal-500/20`}
               />
 
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute top-1/2 right-4 -translate-y-1/2 text-xs font-medium text-gray-400 transition hover:text-white"
+                className="absolute top-1/2 right-4 -translate-y-1/2 text-xs font-medium text-gray-400 transition hover:text-gray-700 dark:hover:text-white"
               >
                 {showPassword ? "Hide" : "Show"}
               </button>
             </div>
 
             {passwordError && (
-              <p className="mt-2 text-xs text-red-400">{passwordError}</p>
+              <p className="mt-2 text-xs text-red-500 dark:text-red-400">
+                {passwordError}
+              </p>
             )}
           </div>
 
@@ -198,11 +218,11 @@ export default function LoginPage() {
         </form>
 
         {/* REGISTER */}
-        <p className="mt-7 text-center text-sm text-gray-400">
+        <p className="mt-7 text-center text-sm text-gray-600 dark:text-gray-400">
           Don't have an account?{" "}
           <Link
             href="/register"
-            className="font-semibold text-teal-400 transition hover:text-teal-300"
+            className="font-semibold text-teal-600 transition hover:text-teal-500 dark:text-teal-400 dark:hover:text-teal-300"
           >
             Sign Up
           </Link>
